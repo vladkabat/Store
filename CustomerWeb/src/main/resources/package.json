@@ -1,0 +1,31 @@
+{
+  "name": "CustomerWeb",
+  "version": "1.0.0",
+  "description": "Customer interface for store",
+  "main": "index.js",
+  "repository": "github.com/vladkabat/Store.git",
+  "author": "VLad Kabat <vlad.kabat@yandex.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "webpack": "^4.8.1"
+  }
+}
