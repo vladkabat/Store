@@ -1,0 +1,1 @@
+export const SET_TABLET = 'SET_TABLET';

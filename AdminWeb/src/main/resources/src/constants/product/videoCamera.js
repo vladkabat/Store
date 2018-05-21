@@ -1,1 +1,0 @@
-export const SET_VIDEO_CAMERA = 'SET_VIDEO_CAMERA';

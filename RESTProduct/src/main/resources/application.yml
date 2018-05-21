@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      database: store
+server:
+  servlet:
+    context-path: /api
+logging:
+  file: ./logs/log.log
