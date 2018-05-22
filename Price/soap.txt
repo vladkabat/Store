@@ -1,6 +1,0 @@
-D:\Lesson\Document\Java\Задания\Epam\OnlineStore\ClientOnlineStorePrices\src\main\java>
-				wsimport -keep -p by.company.service http://localhost:9000/PriceService?wsdl
-				
-D:\Lesson\Document\Java\Задания\Epam\OnlineStore\ServerOnlineStorePrices>
-				wsgen -d target/classes by.company.server.service.PriceService -wsdl
-
