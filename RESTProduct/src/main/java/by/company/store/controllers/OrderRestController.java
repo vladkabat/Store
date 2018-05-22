@@ -1,7 +1,6 @@
 /*
- * @(#)OrderRestController.java 1.8.0_101 2017/09/19
+ * @(#)OrderRestController.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -27,8 +26,6 @@ import java.util.List;
 /**
  * Rest controller for orders
  *
- * @author Kabat Vlad
- * @version 1.0.0 19 Sep 2017
  */
 @RestController
 @Secured("ROLE_CUSTOMER")
@@ -47,11 +44,10 @@ public class OrderRestController {
     public ResponseEntity getOrders() {
         String userId = getCustomerId();
         List<Order> orders = orderService.findNotBoughtOrders(userId);
+        logger.info("User get '{}' orders!", orders.size());
         if (orders.isEmpty()) {
-            logger.info("Orders is empty!");
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
-        logger.info("User get '{}' orders!", orders.size());
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 

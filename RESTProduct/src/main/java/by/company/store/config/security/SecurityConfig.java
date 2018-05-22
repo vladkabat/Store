@@ -1,13 +1,13 @@
 /*
- * @(#)SecurityConfig.java 1.8.0_101 2017/10/01
+ * @(#)SecurityConfig.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
 
 package by.company.store.config.security;
 
+import by.company.store.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +23,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * Configuration Spring Security
  * extends {@link WebSecurityConfigurerAdapter} abstract class
  *
- * @version 1.0.0 19 Oct 2017
- * @author Kabat Vlad
  */
 @Configuration
 @EnableWebSecurity
@@ -32,6 +30,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final StoreUserDetailsService storeUserDetailsService;
+    private static final String REALM_NAME = "STORE";
 
     @Autowired
     public SecurityConfig(StoreUserDetailsService storeUserDetailsService) {
@@ -43,9 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .anonymous().authorities("ROLE_ANONYMOUS")
+                .anonymous().authorities(Role.ROLE_ANONYMOUS.toString())
                 .and()
-                .httpBasic().realmName("STORE");
+                .httpBasic().realmName(REALM_NAME);
     }
 
     //password encoder

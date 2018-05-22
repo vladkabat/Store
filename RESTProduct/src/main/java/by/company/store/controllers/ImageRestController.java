@@ -1,7 +1,6 @@
 /*
- * @(#)ImageRestController.java 1.8.0_101 2017/09/19
+ * @(#)ImageRestController.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -28,8 +27,6 @@ import java.io.IOException;
 /**
  * Rest controller for image products
  *
- * @author Kabat Vlad
- * @version 1.0.0 19 Sep 2017
  */
 @RestController
 @RequestMapping("images")
@@ -45,9 +42,8 @@ public class ImageRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity getImage(@PathVariable String id){
-        GridFsResource imageFile = null;
         try {
-            imageFile = imageService.findById(id);
+            GridFsResource imageFile = imageService.findById(id);
             if(imageFile != null) {
                 logger.info("Image '{}' is found", imageFile.getFilename());
                 return ResponseEntity.ok()

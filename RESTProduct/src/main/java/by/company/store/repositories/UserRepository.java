@@ -1,7 +1,6 @@
 /*
- * @(#)UserRepository.java 1.8.0_101 2017/09/19
+ * @(#)UserRepository.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -15,10 +14,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 /**
- * Repository for model 'User' extends {@link MongoRepository} interface
+ * Repository for model {@link User} extends {@link MongoRepository} interface
  *
- * @version 1.0.0 19 Sep 2017
- * @author Kabat Vlad
  */
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {

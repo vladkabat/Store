@@ -1,7 +1,6 @@
 /*
- * @(#)OrderService.java 1.8.0_101 2017/10/01
+ * @(#)OrderService.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -13,8 +12,6 @@ import by.company.store.models.Order;
 import by.company.store.models.products.Product;
 import by.company.store.repositories.OrderRepository;
 import by.company.soap.PriceService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +21,12 @@ import java.util.List;
 /**
  * Service for orders
  *
- * @author Kabat Vlad
- * @version 1.0.0 03 Oct 2017
  */
 @Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
     private final PriceService priceService;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public OrderService(OrderRepository orderRepository) {
@@ -65,7 +59,6 @@ public class OrderService {
             product.setPrice(price);
             notBoughtOrders.add(order);
         }
-        logger.info("User get {} not bought orders", orders.size());
         return notBoughtOrders;
     }
 
@@ -81,33 +74,23 @@ public class OrderService {
             product.setPrice(price);
             boughtOrders.add(order);
         }
-        logger.info("User get {} bought orders", orders.size());
         return boughtOrders;
     }
 
 
     public Order findById(String orderId) {
-        Order order = orderRepository.findById(orderId).orElse(null);
-        if (order != null) {
-            logger.info("Order {} is found", orderId);
-        } else {
-            logger.error("Order {} not found", orderId);
-        }
-        return order;
+        return orderRepository.findById(orderId).orElse(null);
     }
 
     public void deleteById(String orderId) {
-        logger.info("Order {} is deleted", orderId);
         orderRepository.deleteById(orderId);
     }
 
     public void save(Order order) {
-        logger.info("Order {} is saved", order.getId());
         orderRepository.save(order);
     }
 
     public void update(Order order) {
-        logger.info("Order {} is updated", order.getId());
         orderRepository.save(order);
     }
 
@@ -125,11 +108,9 @@ public class OrderService {
     private Order findOrderByProductId(List<Order> orders, String productId) {
         for (Order order : orders) {
             if (order.getProduct().getId().equals(productId)) {
-                logger.info("Order {} is found", order.getId());
                 return order;
             }
         }
-        logger.error("Order not found");
         return null;
     }
 }

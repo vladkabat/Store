@@ -6,8 +6,8 @@ import by.company.store.models.Order;
 import by.company.store.models.User;
 import by.company.store.models.products.Product;
 import by.company.store.services.OrderService;
-import by.company.store.services.products.PhoneService;
-import by.company.store.services.products.TabletService;
+import by.company.store.services.products.EngineService;
+import by.company.store.services.products.FrequencyConverterService;
 import by.company.store.util.CustomErrorType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,20 +27,15 @@ public class PurchaseRestController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final OrderService orderService;
-    private final PhoneService phoneService;
-    private final TvService tvService;
-    private final TabletService tabletService;
-    private final VideoCameraService videoCameraService;
+    private final EngineService engineService;
+    private final FrequencyConverterService frequencyConverterService;
 
     @Autowired
-    public PurchaseRestController(OrderService orderService, PhoneService phoneService,
-                                  TvService tvService, TabletService tabletService,
-                                  VideoCameraService videoCameraService) {
+    public PurchaseRestController(OrderService orderService, EngineService engineService,
+                                  FrequencyConverterService frequencyConverterService) {
         this.orderService = orderService;
-        this.phoneService = phoneService;
-        this.tvService = tvService;
-        this.tabletService = tabletService;
-        this.videoCameraService = videoCameraService;
+        this.engineService = engineService;
+        this.frequencyConverterService = frequencyConverterService;
     }
 
     @GetMapping()
@@ -90,14 +85,10 @@ public class PurchaseRestController {
 
             Product product = order.getProduct();
             boolean isUpdateAmount = false;
-            if (product.getType().equals(ProductType.TABLET)) {
-                isUpdateAmount = tabletService.updateAmountMinus(product.getId(), order.getAmount());
-            } else if (product.getType().equals(ProductType.PHONE)) {
-                isUpdateAmount = phoneService.updateAmountMinus(product.getId(), order.getAmount());
-            } else if (product.getType().equals(ProductType.TV)) {
-                isUpdateAmount = tvService.updateAmountMinus(product.getId(), order.getAmount());
-            } else if (product.getType().equals(ProductType.VIDEO_CAMERA)) {
-                isUpdateAmount = videoCameraService.updateAmountMinus(product.getId(), order.getAmount());
+            if (product.getType().equals(ProductType.FREQUENCY_CONVERTER)) {
+                isUpdateAmount = frequencyConverterService.updateAmountMinus(product.getId(), order.getAmount());
+            } else if (product.getType().equals(ProductType.ENGINE)) {
+                isUpdateAmount = engineService.updateAmountMinus(product.getId(), order.getAmount());
             }
             if (!isUpdateAmount) {
                 String message = "Count products not equals specified!";

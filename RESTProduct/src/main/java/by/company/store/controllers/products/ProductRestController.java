@@ -1,7 +1,6 @@
 /*
- * @(#)ProductRestController.java 1.8.0_101 2017/10/01
+ * @(#)ProductRestController.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -12,8 +11,8 @@ package by.company.store.controllers.products;
 import by.company.store.enums.FilterProducts;
 import by.company.store.models.Rating;
 import by.company.store.models.products.*;
-import by.company.store.services.products.PhoneService;
-import by.company.store.services.products.TabletService;
+import by.company.store.services.products.EngineService;
+import by.company.store.services.products.FrequencyConverterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +26,21 @@ import java.util.*;
 /**
  * Rest controller for products
  *
- * @version 1.0.0 19 Oct 2017
- * @author Kabat Vlad
  */
 @RestController
 @RequestMapping("products")
 public class ProductRestController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final PhoneService phoneService;
-    private final TvService tvService;
-    private final TabletService tabletService;
-    private final VideoCameraService videoCameraService;
+    private final EngineService engineService;
+    private final FrequencyConverterService frequencyConverterService;
 
     private FilterProducts filterProducts = FilterProducts.UPLOAD_DATE;
 
     @Autowired
-    public ProductRestController(PhoneService phoneService, TvService tvService,
-                                 TabletService tabletService, VideoCameraService videoCameraService) {
-        this.phoneService = phoneService;
-        this.tvService = tvService;
-        this.tabletService = tabletService;
-        this.videoCameraService = videoCameraService;
+    public ProductRestController(EngineService engineService, FrequencyConverterService frequencyConverterService) {
+        this.engineService = engineService;
+        this.frequencyConverterService = frequencyConverterService;
     }
 
     @Secured("ROLE_ADMIN")
@@ -65,12 +57,10 @@ public class ProductRestController {
     @GetMapping()
     public ResponseEntity getFourProductsHomePage() {
         //get products
-        List<Engine> engines = phoneService.findAll();
-        List<Tv> tvs = tvService.findAll();
-        List<VideoCamera> videoCameras = videoCameraService.findAll();
-        List<FrequencyConverter> frequencyConverters = tabletService.findAll();
+        List<Engine> engines = engineService.findAll();
+        List<FrequencyConverter> frequencyConverters = frequencyConverterService.findAll();
         //add all products in one map
-        List<Product> products = getProducts(engines, tvs, videoCameras, frequencyConverters);
+        List<Product> products = getProducts(engines, frequencyConverters);
         //sort products
         if (filterProducts.equals(FilterProducts.UPLOAD_DATE)) {
             products.sort(Comparator.comparing(Product::getUploadDate));
@@ -104,7 +94,7 @@ public class ProductRestController {
         List<Product> clientProducts = new ArrayList<>();
         int countProducts = 4;
         if (products.size() >= countProducts) {
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < countProducts; i++) {
                 clientProducts.add(products.get(i));
             }
         } else {
@@ -114,18 +104,10 @@ public class ProductRestController {
     }
 
     //add all products in one list
-    private List<Product> getProducts(List<Engine> engines, List<Tv> tvs,
-                                      List<VideoCamera> videoCameras,
-                                      List<FrequencyConverter> frequencyConverters) {
+    private List<Product> getProducts(List<Engine> engines, List<FrequencyConverter> frequencyConverters) {
         List<Product> products = new ArrayList<>();
         if (engines.size() != 0) {
             products.addAll(engines);
-        }
-        if (tvs.size() != 0) {
-            products.addAll(tvs);
-        }
-        if (videoCameras.size() != 0) {
-            products.addAll(videoCameras);
         }
         if (frequencyConverters.size() != 0) {
             products.addAll(frequencyConverters);

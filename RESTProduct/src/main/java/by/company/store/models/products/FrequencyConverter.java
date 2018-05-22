@@ -1,7 +1,6 @@
 /*
- * @(#)FrequencyConverter.java 1.8.0_101 2017/09/19
+ * @(#)FrequencyConverter.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -12,20 +11,19 @@ import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Model 'FrequencyConverter' extends {@link Product} abstract class
+ * Model {@link FrequencyConverter} extends {@link Product} abstract class
  *
- * @version 1.0.0 19 Sep 2017
- * @author Kabat Vlad
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "tablets")
+@Document(collection = "frequency_converters")
 public class FrequencyConverter extends Product {
 
-    private double ram;
-    private double numberCores;
-    private double screenSize;
+    private String manufacturer; //производитель
+    private double outputPower; //выходная мощность
+    private double outputCurrent; //выходной ток
+    private double outputVoltage; //выходное напряжение
 }

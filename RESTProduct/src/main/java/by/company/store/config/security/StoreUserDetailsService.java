@@ -1,7 +1,6 @@
 /*
- * @(#)StoreUserDetailsService.java 1.8.0_101 2017/10/01
+ * @(#)StoreUserDetailsService.java
  *
- * Copyright (c) 2017 Kabat Vlad
  */
 
 
@@ -19,8 +18,6 @@ import org.springframework.stereotype.Service;
  * Service for get user from db
  * implements {@link UserDetailsService} interface
  *
- * @version 1.0.0 19 Oct 2017
- * @author Kabat Vlad
  */
 @Service
 public class StoreUserDetailsService implements UserDetailsService {
