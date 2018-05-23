@@ -1,6 +1,6 @@
 import {
     SET_ENGINE
-} from '../../constants/product/engine'
+} from '../../constants/products/engines'
 import {API_URL} from "../../constants/store"
 
 const initialState = {

@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getManufacturers} from '../actions/manufacturers'
-import {deleteManufacturer} from '../actions/manufacturer'
+import {getManufacturers, deleteManufacturer} from '../actions/manufacturers'
 import Manufacturer from "../components/Manufacturer"
 import FilterProducts from "../components/FilterProducts"
 

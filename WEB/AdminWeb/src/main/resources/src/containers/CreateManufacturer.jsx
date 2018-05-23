@@ -1,6 +1,6 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
-import {createManufacturer} from '../actions/manufacturer'
+import {createManufacturer} from '../actions/manufacturers'
 import {connect} from 'react-redux'
 import ErrorMessage from "../components/ErrorMessage";
 

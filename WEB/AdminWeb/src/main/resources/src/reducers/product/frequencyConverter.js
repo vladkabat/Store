@@ -1,6 +1,6 @@
 import {
     SET_FREQUENCY_CONVERTER
-} from '../../constants/product/frequencyConverter'
+} from '../../constants/products/frequencyConverters'
 import {API_URL} from "../../constants/store"
 
 const initialState = {

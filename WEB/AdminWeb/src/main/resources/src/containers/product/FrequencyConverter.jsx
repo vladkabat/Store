@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {getFrequencyConverter, deleteFrequencyConverter} from '../../actions/product/frequencyConverter'
+import {getFrequencyConverter, deleteFrequencyConverter} from '../../actions/products/frequencyConverters'
 import {connect} from 'react-redux'
 import ErrorMessage from "../../components/ErrorMessage";
 
