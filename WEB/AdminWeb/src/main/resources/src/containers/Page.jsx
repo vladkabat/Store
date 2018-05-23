@@ -1,26 +1,20 @@
 import React from 'react'
 import Menu from '../components/Menu'
 import {Switch, Route} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {logout} from '../actions/admin'
 import LoginPage from './LoginPage'
-import Phones from './products/Phones'
-import Phone from './product/Phone'
-import Tvs from './products/Tvs'
-import Tv from './product/Tv'
-import Tablet from './product/Tablet'
-import VideoCamera from './product/VideoCamera'
-import VideoCameras from './products/VideoCameras'
-import Tablets from './products/Tablets'
-import {connect} from 'react-redux'
-import UpdatePhone from "./product/update/UpdatePhone"
-import UpdateTv from "./product/update/UpdateTv"
-import UpdateTablet from "./product/update/UpdateTablet"
-import UpdateVideoCamera from "./product/update/UpdateVideoCamera"
-import CreatePhone from "./product/create/CreatePhone"
-import CreateTv from "./product/create/CreateTv"
-import CreateTablet from "./product/create/CreateTablet"
-import CreateVideoCamera from "./product/create/CreateVideoCamera"
-import FilterProducts from "../components/FilterProducts"
+import Engines from './products/Engines'
+import Engine from './product/Engine'
+import FrequencyConverter from './product/FrequencyConverter'
+import FrequencyConverters from './products/FrequencyConverters'
+import UpdateEngine from "./product/update/UpdateEngine"
+import UpdateFrequencyConverter from "./product/update/UpdateFrequencyConverter"
+import CreateEngine from "./product/create/CreateEngine"
+import CreateFrequencyConverter from "./product/create/CreateFrequencyConverter"
+import Manufacturers from "./Manufacturers"
+import CreateManufacturer from "./CreateManufacturer"
+import UpdateManufacturer from "./UpdateManufacturer"
 import 'bootstrap/dist/css/bootstrap.css'
 
 const Page = ({isAuthenticated, onLogout}) => {
@@ -29,26 +23,20 @@ const Page = ({isAuthenticated, onLogout}) => {
         return (
             <div className="container">
                 <Menu logout={onLogout}/>
-                <FilterProducts/>
                 <Switch>
-                    <Route exact path='/' component={Phones}/>
-                    <Route exact path='/engines' component={Phones}/>
-                    <Route exact path='/tvs' component={Tvs}/>
-                    <Route exact path='/videoCameras' component={VideoCameras}/>
-                    <Route exact path='/frequencyConverters' component={Tablets}/>
+                    <Route exact path='/' component={Engines}/>
+                    <Route exact path='/engines' component={Engines}/>
+                    <Route exact path='/frequencyConverters' component={FrequencyConverters}/>
+                    <Route exact path='/manufacturers' component={Manufacturers}/>
                     <Route path='/login' component={LoginPage}/>
-                    <Route path='/engines/:id' component={Phone}/>
-                    <Route path='/tvs/:id' component={Tv}/>
-                    <Route path='/frequencyConverters/:id' component={Tablet}/>
-                    <Route path='/videoCameras/:id' component={VideoCamera}/>
-                    <Route path='/update/engines/:id' component={UpdatePhone}/>
-                    <Route path='/update/tvs/:id' component={UpdateTv}/>
-                    <Route path='/update/frequencyConverters/:id' component={UpdateTablet}/>
-                    <Route path='/update/videoCameras/:id' component={UpdateVideoCamera}/>
-                    <Route path='/create/engines' component={CreatePhone}/>
-                    <Route path='/create/tvs' component={CreateTv}/>
-                    <Route path='/create/frequencyConverters' component={CreateTablet}/>
-                    <Route path='/create/videoCameras' component={CreateVideoCamera}/>
+                    <Route path='/engines/:id' component={Engine}/>
+                    <Route path='/frequencyConverters/:id' component={FrequencyConverter}/>
+                    <Route path='/update/engines/:id' component={UpdateEngine}/>
+                    <Route path='/update/frequencyConverters/:id' component={UpdateFrequencyConverter}/>
+                    <Route path='/create/engines' component={CreateEngine}/>
+                    <Route path='/create/frequencyConverters' component={CreateFrequencyConverter}/>
+                    <Route path='/create/manufacturers' component={CreateManufacturer}/>
+                    <Route path='/update/manufacturers/:id' component={UpdateManufacturer}/>
                 </Switch>
             </div>
         )
@@ -63,7 +51,7 @@ const Page = ({isAuthenticated, onLogout}) => {
 
 export default connect(
     state => ({
-        isAuthenticated: state.status.authenticatedAdmin
+        isAuthenticated: state.status.authenticated
     }),
     dispatch => ({
         onLogout: () => {

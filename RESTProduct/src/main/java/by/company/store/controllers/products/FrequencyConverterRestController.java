@@ -33,7 +33,7 @@ import java.util.Date;
  *
  */
 @RestController
-@RequestMapping("frequency_converter")
+@RequestMapping("frequencyConverters")
 public class FrequencyConverterRestController {
 
     private final FrequencyConverterService frequencyConverterService;
@@ -123,7 +123,7 @@ public class FrequencyConverterRestController {
                 FrequencyConverter frequencyConverter = frequencyConverterService.findById(id);
                 if (frequencyConverter != null) {
                     imageService.delete(frequencyConverter.getImageId());
-                    String imageId = gridFSFile.getId().toString();
+                    String imageId = gridFSFile.getId().asObjectId().getValue().toString();
                     Date uploadDate = gridFSFile.getUploadDate();
                     frequencyConverter.setName(name);
                     frequencyConverter.setManufacturer(manufacturer);
@@ -175,7 +175,7 @@ public class FrequencyConverterRestController {
         if (!file.isEmpty()) {
             GridFSFile gridFSFile = imageService.save(file);
             if (gridFSFile != null) {
-                String imageId = gridFSFile.getId().toString();
+                String imageId = gridFSFile.getId().asObjectId().getValue().toString();
                 Date uploadDate = gridFSFile.getUploadDate();
                 FrequencyConverter frequencyConverter = new FrequencyConverter();
                 frequencyConverter.setName(name);

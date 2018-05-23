@@ -1,33 +1,33 @@
 import axios from 'axios'
 import {
-    SET_PHONE
-} from '../../constants/product/phone'
+    SET_ENGINE
+} from '../../constants/product/engine'
 import {
-    dataDeleteProductTrue,
-    dataCreatedProductTrue,
-    dataUpdatedProductTrue
+    dataDeleteTrue,
+    dataCreatedTrue,
+    dataUpdatedTrue
 } from '../status'
 import {API_URL} from '../../constants/store'
 import {dataClearErrorMessage, dataSetErrorMessage} from "../message"
 
-export const getPhone = (id) => {
+export const getEngine = (id) => {
     return (dispatch) => {
         return axios
-            .get(API_URL + '/phones/' + id)
+            .get(API_URL + '/engines/' + id)
             .then((response) => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataGetPhone(response.data));
+                dispatch(dataGetEngine(response.data));
             })
     }
 };
 
-export const deletePhone = (id) => {
+export const deleteEngine = (id) => {
     return (dispatch) => {
         return axios
-            .delete(API_URL + '/phones/' + id)
+            .delete(API_URL + '/engines/' + id)
             .then(() => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataDeleteProductTrue());
+                dispatch(dataDeleteTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -35,25 +35,25 @@ export const deletePhone = (id) => {
     }
 };
 
-export const createPhone = (file, name, description, ram, numberCores, amount, screenSize) => {
+export const createEngine = (file, name, manufacturer, ratedPower, ratedCurrent, amount, ratedVoltage) => {
     let data = new FormData();
     data.append("file", file);
     data.append("name", name);
-    data.append("description", description);
-    data.append("ram", ram);
-    data.append("numberCores", numberCores);
+    data.append("manufacturer", manufacturer);
+    data.append("ratedPower", ratedPower);
+    data.append("ratedCurrent", ratedCurrent);
     data.append("amount", amount);
-    data.append("screenSize", screenSize);
+    data.append("ratedVoltage", ratedVoltage);
     return (dispatch) => {
         return axios
-            .post(API_URL + '/phones/', data, {
+            .post(API_URL + '/engines/', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
             .then(() => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataCreatedProductTrue());
+                dispatch(dataCreatedTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -61,28 +61,28 @@ export const createPhone = (file, name, description, ram, numberCores, amount, s
     }
 };
 
-export const updatePhone = (file, id, name, description, ram, numberCores, amount, screenSize) => {
+export const updateEngine = (file, id, name, manufacturer, ratedPower, ratedCurrent, amount, ratedVoltage) => {
     let data = new FormData();
     if(file !== undefined){
         data.append("file", file);
     }
     data.append("id", id);
     data.append("name", name);
-    data.append("description", description);
-    data.append("ram", ram);
-    data.append("numberCores", numberCores);
+    data.append("manufacturer", manufacturer);
+    data.append("ratedPower", ratedPower);
+    data.append("ratedCurrent", ratedCurrent);
     data.append("amount", amount);
-    data.append("screenSize", screenSize);
+    data.append("ratedVoltage", ratedVoltage);
     return (dispatch) => {
         return axios
-            .put(API_URL + '/phones/', data, {
+            .put(API_URL + '/engines/', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-            .then(() => {
+            .then((response) => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataUpdatedProductTrue());
+                dispatch(dataUpdatedTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -90,9 +90,8 @@ export const updatePhone = (file, id, name, description, ram, numberCores, amoun
     }
 };
 
-const dataGetPhone = (phone) => {
-    return {type: SET_PHONE, payload: phone};
+const dataGetEngine = (engine) => {
+    return {type: SET_ENGINE, payload: engine};
 };
-
 
 

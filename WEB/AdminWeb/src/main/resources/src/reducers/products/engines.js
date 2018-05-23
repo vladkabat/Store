@@ -1,6 +1,6 @@
 import {
-    SET_PHONES
-} from '../../constants/products/phones'
+    SET_ENGINES
+} from '../../constants/products/engines'
 import {API_URL} from "../../constants/store"
 
 const initialState = {
@@ -14,8 +14,8 @@ const initialState = {
     totalPages: 0
 };
 
-const phones = (state = initialState, action) => {
-    if (action.type === SET_PHONES) {
+const engines = (state = initialState, action) => {
+    if (action.type === SET_ENGINES) {
         let page = action.payload;
         let products = page.content;
         if (products != null && products.length > 0) {
@@ -38,7 +38,7 @@ const phones = (state = initialState, action) => {
                     return {
                         ...product,
                         rating: rating,
-                        link: "/phones/" + product.id,
+                        link: "/engines/" + product.id,
                         urlImage: API_URL + "/images/" + product.imageId
                     };
                 })
@@ -51,4 +51,4 @@ const phones = (state = initialState, action) => {
     return state
 };
 
-export default phones
+export default engines

@@ -144,7 +144,7 @@ public class EngineRestController {
                 Engine engine = engineService.findById(id);
                 if (engine != null) {
                     imageService.delete(engine.getImageId());
-                    String imageId = gridFSFile.getId().toString();
+                    String imageId = gridFSFile.getId().asObjectId().getValue().toString();
                     Date uploadDate = gridFSFile.getUploadDate();
                     engine.setName(name);
                     engine.setManufacturer(manufacturer);

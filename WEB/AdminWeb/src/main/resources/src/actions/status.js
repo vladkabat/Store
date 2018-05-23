@@ -1,33 +1,33 @@
 import {
-    AUTHENTICATED_ADMIN_FALSE,
-    AUTHENTICATED_ADMIN_TRUE,
-    UPDATED_PRODUCT_TRUE,
-    CREATED_PRODUCT_TRUE,
-    DELETED_PRODUCT_TRUE,
-    OPERATIONS_PRODUCT_FALSE
+    AUTHENTICATED_FALSE,
+    AUTHENTICATED_TRUE,
+    UPDATED_TRUE,
+    CREATED_TRUE,
+    DELETED_TRUE,
+    OPERATIONS_FALSE
 } from '../constants/status'
 
-export const dataOperationsProductFalse = () => {
-    return {type: OPERATIONS_PRODUCT_FALSE};
+export const dataOperationsFalse = () => {
+    return {type: OPERATIONS_FALSE};
 };
 
-export const dataAuthenticatedAdminFalse = () => {
-    return {type: AUTHENTICATED_ADMIN_FALSE};
+export const dataAuthenticatedFalse = () => {
+    return {type: AUTHENTICATED_FALSE};
 };
 
-export const dataAuthenticatedAdminTrue = () => {
-    return {type: AUTHENTICATED_ADMIN_TRUE};
+export const dataAuthenticatedTrue = () => {
+    return {type: AUTHENTICATED_TRUE};
 };
 
-export const dataCreatedProductTrue = () => {
-    return {type: CREATED_PRODUCT_TRUE};
+export const dataCreatedTrue = () => {
+    return {type: CREATED_TRUE};
 };
 
-export const dataUpdatedProductTrue = () => {
-    return {type: UPDATED_PRODUCT_TRUE};
+export const dataUpdatedTrue = () => {
+    return {type: UPDATED_TRUE};
 };
 
-export const dataDeleteProductTrue = () => {
-    return {type: DELETED_PRODUCT_TRUE};
+export const dataDeleteTrue = () => {
+    return {type: DELETED_TRUE};
 };
 

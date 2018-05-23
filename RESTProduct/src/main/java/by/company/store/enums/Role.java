@@ -14,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public enum Role implements GrantedAuthority {
     ROLE_CUSTOMER,
+    ROLE_ADMIN,
     ROLE_ANONYMOUS;
 
     @Override

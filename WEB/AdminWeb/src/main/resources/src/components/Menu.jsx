@@ -10,16 +10,13 @@ const Menu = ({logout}) => {
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mr-auto">
                       <li className="nav-item">
-                        <Link className="nav-link" to='/engines'>Phones</Link>
+                        <Link className="nav-link" to='/engines'>Engines</Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" to='/frequencyConverters'>Tablets</Link>
+                        <Link className="nav-link" to='/frequencyConverters'>Frequency converters</Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" to='/tvs'>TVs</Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="nav-link" to='/videoCameras'>Video cameras</Link>
+                        <Link className="nav-link" to='/manufacturers'>Manufacturers</Link>
                       </li>
                     </ul>
                     <ul className="navbar-nav navbar-right">

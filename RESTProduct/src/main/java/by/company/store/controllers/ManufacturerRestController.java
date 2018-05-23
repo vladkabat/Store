@@ -34,25 +34,6 @@ public class ManufacturerRestController {
         this.manufacturerService = manufacturerService;
     }
 
-    /**
-     * Get manufacturer by id
-     *
-     * @param id id manufacturer
-     * @return if exist return 'manufacturer with OK' else NOT_FOUND
-     */
-    @GetMapping("{id}")
-    public ResponseEntity getManufacturer(@PathVariable String id) {
-        Manufacturer manufacturer = manufacturerService.findById(id);
-        if (manufacturer != null) {
-            logger.info("Manufacturer {} is found", manufacturer.getName());
-            return new ResponseEntity<>(manufacturer, HttpStatus.OK);
-        } else {
-            String message = "Manufacturer " + id + " not found!";
-            return new ResponseEntity<>(CustomErrorType.builder()
-                    .errorMessage(message).build(), HttpStatus.NOT_FOUND);
-        }
-    }
-
     //get all manufacturers
     @GetMapping()
     public ResponseEntity getManufacturers(Pageable pageable) {
@@ -89,20 +70,18 @@ public class ManufacturerRestController {
 
     @Secured("ROLE_ADMIN")
     @PutMapping()
-    public ResponseEntity update(@RequestParam String id, @RequestParam String name,
-                                             @RequestParam String description, @RequestParam String phone,
-                                             @RequestParam String email) {
-        Manufacturer manufacturer = manufacturerService.findById(id);
+    public ResponseEntity update(@RequestBody Manufacturer manufac) {
+        Manufacturer manufacturer = manufacturerService.findById(manufac.getId());
         if (manufacturer != null) {
-            manufacturer.setName(name);
-            manufacturer.setDescription(description);
-            manufacturer.setEmail(email);
-            manufacturer.setPhone(phone);
+            manufacturer.setName(manufac.getName());
+            manufacturer.setDescription(manufac.getDescription());
+            manufacturer.setEmail(manufac.getEmail());
+            manufacturer.setPhone(manufac.getPhone());
             manufacturerService.update(manufacturer);
             logger.info("Manufacturer {} is updated", manufacturer.getName());
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            String message = "Manufacturer " + id + " not found!";
+            String message = "Manufacturer " + manufac.getId() + " not found!";
             logger.error(message);
             return new ResponseEntity<>(CustomErrorType.builder()
                     .errorMessage(message).build(), HttpStatus.NOT_FOUND);

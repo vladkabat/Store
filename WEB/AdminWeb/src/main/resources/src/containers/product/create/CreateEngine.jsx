@@ -1,35 +1,35 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
-import {createTablet} from '../../../actions/product/frequencyConverter'
+import {createEngine} from '../../../actions/product/engine'
 import {connect} from 'react-redux'
 import ErrorMessage from "../../../components/ErrorMessage";
 
-const CreateTablet = ({isCreatedProduct, onCreateTablet, errorMessage}) => {
+const CreateEngine = ({isCreated, onCreateEngine, errorMessage}) => {
 
     let name = '';
     let file = '';
-    let description = '';
-    let ram = '';
-    let numberCores = '';
+    let manufacturer = '';
+    let ratedPower = '';
+    let ratedCurrent = '';
     let amount = '';
-    let screenSize = '';
+    let ratedVoltage = '';
 
-    const handlerCreateTablet = (event) => {
+    const handlerCreateEngine = (event) => {
         event.preventDefault();
-        onCreateTablet(file.files[0], name.value,
-            description.value, ram.value, numberCores.value, amount.value, screenSize.value);
+        onCreateEngine(file.files[0], name.value,
+            manufacturer.value, ratedPower.value, ratedCurrent.value, amount.value, ratedVoltage.value);
     };
 
-    if (isCreatedProduct) {
-        return <Redirect to="/frequencyConverters"/>
+    if (isCreated) {
+        return <Redirect to="/engines"/>
     } else {
         return (
             <div>
-                <h1 className="well">Create frequencyConverter</h1>
+                <h1 className="well">Create engine</h1>
                 <ErrorMessage message={errorMessage}/>
                 <div className="col-lg-12 well">
                     <div className="row">
-                        <form onSubmit={handlerCreateTablet}>
+                        <form onSubmit={handlerCreateEngine}>
                             <div className="col-sm-12">
                                 <div className="form-group">
                                     <input type="file" accept="image/*" className="form-control-file"
@@ -39,44 +39,44 @@ const CreateTablet = ({isCreatedProduct, onCreateTablet, errorMessage}) => {
                                 </div>
                                 <div className="form-group">
                                     <label>Name</label>
-                                    <input type="text" placeholder="Enter Name Here.."
+                                    <input type="text" placeholder="Enter name here.."
                                            ref={(input) => {
                                                name = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Description</label>
-                                    <textarea placeholder="Enter Description Here.." rows="3"
+                                    <label>Manufacturer</label>
+                                    <input type="text" placeholder="Enter manufacturer here.."
                                               ref={(input) => {
-                                                  description = input
+                                                  manufacturer = input
                                               }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
                                     <label>Amount</label>
-                                    <input type="number" placeholder="Enter Amount Here.."
+                                    <input type="number" placeholder="Enter amount here.."
                                            ref={(input) => {
                                                amount = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Number cores</label>
-                                    <input type="number" placeholder="Enter Number Cores Here.." step="0.1"
+                                    <label>Rated power</label>
+                                    <input type="number" placeholder="Enter rated power here.." step="0.1"
                                            ref={(input) => {
-                                               numberCores = input
+                                               ratedPower = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>RAM</label>
-                                    <input type="number" placeholder="Enter RAM Here.." step="0.1"
+                                    <label>Rated current</label>
+                                    <input type="number" placeholder="Enter rated current here.." step="0.1"
                                            ref={(input) => {
-                                               ram = input
+                                               ratedCurrent = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Screen size</label>
-                                    <input type="number" placeholder="Enter Screen Size Here.." step="0.1"
+                                    <label>Rated voltage</label>
+                                    <input type="number" placeholder="Enter rated voltage here.." step="0.1"
                                            ref={(input) => {
-                                               screenSize = input
+                                               ratedVoltage = input
                                            }} className="form-control" required/>
                                 </div>
                                 <button className="btn btn-lg btn-info">Submit</button>
@@ -91,12 +91,12 @@ const CreateTablet = ({isCreatedProduct, onCreateTablet, errorMessage}) => {
 
 export default connect(
     state => ({
-        isCreatedProduct: state.status.createdProduct,
+        isCreated: state.status.created,
         errorMessage: state.message
     }),
     dispatch => ({
-        onCreateTablet: (file, name, description, ram, numberCores, amount, screenSize) => {
-            dispatch(createTablet(file, name, description, ram, numberCores, amount, screenSize))
+        onCreateEngine: (file, name, manufacturer, ratedPower, ratedCurrent, amount, ratedVoltage) => {
+            dispatch(createEngine(file, name, manufacturer, ratedPower, ratedCurrent, amount, ratedVoltage))
         }
     })
-)(CreateTablet)
+)(CreateEngine)

@@ -1,35 +1,35 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
-import {createPhone} from '../../../actions/product/engine'
+import {createFrequencyConverter} from '../../../actions/product/frequencyConverter'
 import {connect} from 'react-redux'
 import ErrorMessage from "../../../components/ErrorMessage";
 
-const CreatePhone = ({isCreatedProduct, onCreatePhone, errorMessage}) => {
+const CreateFrequencyConverter = ({isCreated, onCreateFrequencyConverter, errorMessage}) => {
 
     let name = '';
     let file = '';
-    let description = '';
-    let ram = '';
-    let numberCores = '';
+    let manufacturer = '';
+    let outputPower = '';
+    let outputCurrent = '';
     let amount = '';
-    let screenSize = '';
+    let outputVoltage = '';
 
-    const handlerCreatePhone = (event) => {
+    const handlerCreateFrequencyConverter = (event) => {
         event.preventDefault();
-        onCreatePhone(file.files[0], name.value,
-            description.value, ram.value, numberCores.value, amount.value, screenSize.value);
+        onCreateFrequencyConverter(file.files[0], name.value,
+            manufacturer.value, outputPower.value, outputCurrent.value, amount.value, outputVoltage.value);
     };
 
-    if (isCreatedProduct) {
-        return <Redirect to="/engines"/>
+    if (isCreated) {
+        return <Redirect to="/frequencyConverters"/>
     } else {
         return (
             <div>
-                <h1 className="well">Create engine</h1>
+                <h1 className="well">Create frequency converter</h1>
                 <ErrorMessage message={errorMessage}/>
                 <div className="col-lg-12 well">
                     <div className="row">
-                        <form onSubmit={handlerCreatePhone}>
+                        <form onSubmit={handlerCreateFrequencyConverter}>
                             <div className="col-sm-12">
                                 <div className="form-group">
                                     <input type="file" accept="image/*" className="form-control-file"
@@ -45,10 +45,10 @@ const CreatePhone = ({isCreatedProduct, onCreatePhone, errorMessage}) => {
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Description</label>
-                                    <textarea placeholder="Enter Description Here.." rows="3"
+                                    <label>Manufacturer</label>
+                                    <input type="text" placeholder="Enter manufacturer here.."
                                               ref={(input) => {
-                                                  description = input
+                                                  manufacturer = input
                                               }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
@@ -59,24 +59,24 @@ const CreatePhone = ({isCreatedProduct, onCreatePhone, errorMessage}) => {
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Number cores</label>
-                                    <input type="number" placeholder="Enter Number Cores Here.." step="0.1"
+                                    <label>Output power</label>
+                                    <input type="number" placeholder="Enter output power here.." step="0.1"
                                            ref={(input) => {
-                                               numberCores = input
+                                               outputPower = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>RAM</label>
-                                    <input type="number" placeholder="Enter RAM Here.." step="0.1"
+                                    <label>Output current</label>
+                                    <input type="number" placeholder="Enter output current here.." step="0.1"
                                            ref={(input) => {
-                                               ram = input
+                                               outputCurrent = input
                                            }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label>Screen size</label>
-                                    <input type="number" placeholder="Enter Screen Size Here.." step="0.1"
+                                    <label>Output voltage</label>
+                                    <input type="number" placeholder="Enter output voltage here.." step="0.1"
                                            ref={(input) => {
-                                               screenSize = input
+                                               outputVoltage = input
                                            }} className="form-control" required/>
                                 </div>
                                 <button className="btn btn-lg btn-info">Submit</button>
@@ -91,12 +91,12 @@ const CreatePhone = ({isCreatedProduct, onCreatePhone, errorMessage}) => {
 
 export default connect(
     state => ({
-        isCreatedProduct: state.status.createdProduct,
+        isCreated: state.status.created,
         errorMessage: state.message
     }),
     dispatch => ({
-        onCreatePhone: (file, name, description, ram, numberCores, amount, screenSize) => {
-            dispatch(createPhone(file, name, description, ram, numberCores, amount, screenSize))
+        onCreateFrequencyConverter: (file, name, manufacturer, outputPower, outputCurrent, amount, outputVoltage) => {
+            dispatch(createFrequencyConverter(file, name, manufacturer, outputPower, outputCurrent, amount, outputVoltage))
         }
     })
-)(CreatePhone)
+)(CreateFrequencyConverter)

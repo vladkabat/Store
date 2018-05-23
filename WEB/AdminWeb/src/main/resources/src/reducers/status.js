@@ -1,51 +1,51 @@
 import {
-    AUTHENTICATED_ADMIN_TRUE,
-    AUTHENTICATED_ADMIN_FALSE,
-    UPDATED_PRODUCT_TRUE,
-    CREATED_PRODUCT_TRUE,
-    DELETED_PRODUCT_TRUE,
-    OPERATIONS_PRODUCT_FALSE
+    AUTHENTICATED_TRUE,
+    AUTHENTICATED_FALSE,
+    UPDATED_TRUE,
+    CREATED_TRUE,
+    DELETED_TRUE,
+    OPERATIONS_FALSE
 } from '../constants/status'
 
 const initialState = {
-    authenticatedAdmin: false,
-    createdProduct: false,
-    deletedProduct: false,
-    updatedProduct: false
+    authenticated: false,
+    created: false,
+    deleted: false,
+    updated: false
 };
 
 const status = (state = initialState, action) => {
-    if (action.type === AUTHENTICATED_ADMIN_TRUE) {
+    if (action.type === AUTHENTICATED_TRUE) {
         return {
             ...state,
-            authenticatedAdmin: true
+            authenticated: true
         };
-    } else if (action.type === AUTHENTICATED_ADMIN_FALSE) {
+    } else if (action.type === AUTHENTICATED_FALSE) {
         return {
             ...state,
-            authenticatedAdmin: false
+            authenticated: false
         };
-    } else if (action.type === DELETED_PRODUCT_TRUE) {
+    } else if (action.type === DELETED_TRUE) {
         return {
             ...state,
-            deletedProduct: true
+            deleted: true
         };
-    } else if (action.type === UPDATED_PRODUCT_TRUE) {
+    } else if (action.type === UPDATED_TRUE) {
         return {
             ...state,
-            updatedProduct: true
+            updated: true
         };
-    } else if (action.type === CREATED_PRODUCT_TRUE) {
+    } else if (action.type === CREATED_TRUE) {
         return {
             ...state,
-            createdProduct: true
+            created: true
         };
-    } else if (action.type === OPERATIONS_PRODUCT_FALSE) {
+    } else if (action.type === OPERATIONS_FALSE) {
         return {
             ...state,
-            createdProduct: false,
-            deletedProduct: false,
-            updatedProduct: false
+            created: false,
+            deleted: false,
+            updated: false
         };
     }
     return state

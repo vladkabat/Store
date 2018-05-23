@@ -1,34 +1,33 @@
 import React, {Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {getPhone, deletePhone} from '../../actions/product/engine'
+import {getEngine, deleteEngine} from '../../actions/product/engine'
 import {connect} from 'react-redux'
 import ErrorMessage from "../../components/ErrorMessage";
 
-class Phone extends Component {
+class Engine extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id;
-        const {onGetPhone} = this.props;
-        onGetPhone(id);
+        const {onGetEngine} = this.props;
+        onGetEngine(id);
     }
 
     render() {
-        const {isDeletedProduct, engine, onDeletePhone, errorMessage} = this.props;
+        const {isDeleted, engine, onDeleteEngine, errorMessage} = this.props;
 
-        if (isDeletedProduct) {
+        if (isDeleted) {
             return <Redirect to="/engines"/>
         } else {
             return (
                 <div className="col-md-12">
+                    <br/>
                     <div className="col-md-4 container-fluid bg-1">
                         <div className="alert alert-success text-center">
                             <h4><strong>{engine.name}</strong></h4>
                         </div>
                         <div className="image text-center">
-                            <img src={engine.urlImage} width="220" height="340"/>
+                            <img src={engine.urlImage} width="220" height="250"/>
                         </div>
-                        <br/>
-                        <div className="alert alert-info"><h5>{engine.description}</h5></div>
                     </div>
                     <div className="col-md-8">
                         <div className="portlet light bordered">
@@ -42,7 +41,7 @@ class Phone extends Component {
                                             Data &nbsp;
                                             <Link to={engine.linkUpdate}
                                                   className="btn btn-primary">Update &raquo;</Link> &nbsp;
-                                            <button onClick={() => onDeletePhone(engine.id)}
+                                            <button onClick={() => onDeleteEngine(engine.id)}
                                                     className="btn btn-primary">Delete &raquo;</button>
                                         </h2>
                                     </span>
@@ -86,16 +85,20 @@ class Phone extends Component {
                                     </thead>
                                     <tbody>
                                     <tr className="warning">
-                                        <th scope="row">Number cores</th>
-                                        <td>{engine.numberCores}</td>
+                                        <th scope="row">Manufacturer</th>
+                                        <td>{engine.manufacturer}</td>
                                     </tr>
                                     <tr className="warning">
-                                        <th scope="row">RAM</th>
-                                        <td>{engine.ram}</td>
+                                        <th scope="row">Rated power</th>
+                                        <td>{engine.ratedPower}</td>
                                     </tr>
                                     <tr className="warning">
-                                        <th scope="row">Screen size</th>
-                                        <td>{engine.screenSize}</td>
+                                        <th scope="row">Rated current</th>
+                                        <td>{engine.ratedCurrent}</td>
+                                    </tr>
+                                    <tr className="warning">
+                                        <th scope="row">Rated voltage</th>
+                                        <td>{engine.ratedVoltage}</td>
                                     </tr>
                                     <tr className="warning">
                                         <th scope="row">Price</th>
@@ -115,15 +118,15 @@ class Phone extends Component {
 export default connect(
     state => ({
         engine: state.engine,
-        isDeletedProduct: state.status.deletedProduct,
+        isDeleted: state.status.deleted,
         errorMessage: state.message
     }),
     dispatch => ({
-        onGetPhone: (id) => {
-            dispatch(getPhone(id))
+        onGetEngine: (id) => {
+            dispatch(getEngine(id))
         },
-        onDeletePhone: (id) => {
-            dispatch(deletePhone(id))
+        onDeleteEngine: (id) => {
+            dispatch(deleteEngine(id))
         }
     })
-)(Phone)
+)(Engine)

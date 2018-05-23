@@ -1,34 +1,33 @@
 import React, {Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import {getTablet, deleteTablet} from '../../actions/product/frequencyConverter'
+import {getFrequencyConverter, deleteFrequencyConverter} from '../../actions/product/frequencyConverter'
 import {connect} from 'react-redux'
 import ErrorMessage from "../../components/ErrorMessage";
 
-class Tablet extends Component {
+class FrequencyConverter extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id;
-        const {onGetTablet} = this.props;
-        onGetTablet(id);
+        const {onGetFrequencyConverter} = this.props;
+        onGetFrequencyConverter(id);
     }
 
     render() {
-        const {isDeletedProduct, frequencyConverter, onDeleteTablet, errorMessage} = this.props;
+        const {isDeleted, frequencyConverter, onDeleteFrequencyConverter, errorMessage} = this.props;
 
-        if (isDeletedProduct) {
+        if (isDeleted) {
             return <Redirect to="/frequencyConverters"/>
         } else {
             return (
                 <div className="col-md-12">
+                    <br/>
                     <div className="col-md-4 container-fluid bg-1">
                         <div className="alert alert-success text-center">
                             <h4><strong>{frequencyConverter.name}</strong></h4>
                         </div>
                         <div className="image text-center">
-                            <img src={frequencyConverter.urlImage} width="220" height="340"/>
+                            <img src={frequencyConverter.urlImage} width="220" height="250"/>
                         </div>
-                        <br/>
-                        <div className="alert alert-info"><h5>{frequencyConverter.description}</h5></div>
                     </div>
                     <div className="col-md-8">
                         <div className="portlet light bordered">
@@ -43,7 +42,7 @@ class Tablet extends Component {
                                             Data &nbsp;
                                             <Link to={frequencyConverter.linkUpdate}
                                                   className="btn btn-primary">Update &raquo;</Link> &nbsp;
-                                            <button onClick={() => onDeleteTablet(frequencyConverter.id)}
+                                            <button onClick={() => onDeleteFrequencyConverter(frequencyConverter.id)}
                                                     className="btn btn-primary">Delete &raquo;</button>
                                         </h2>
                                     </span>
@@ -87,16 +86,20 @@ class Tablet extends Component {
                                     </thead>
                                     <tbody>
                                     <tr className="warning">
-                                        <th scope="row">Number cores</th>
-                                        <td>{frequencyConverter.numberCores}</td>
+                                        <th scope="row">Manufacturer</th>
+                                        <td>{frequencyConverter.manufacturer}</td>
                                     </tr>
                                     <tr className="warning">
-                                        <th scope="row">RAM</th>
-                                        <td>{frequencyConverter.ram}</td>
+                                        <th scope="row">Output power</th>
+                                        <td>{frequencyConverter.outputPower}</td>
                                     </tr>
                                     <tr className="warning">
-                                        <th scope="row">Screen size</th>
-                                        <td>{frequencyConverter.screenSize}</td>
+                                        <th scope="row">Output current</th>
+                                        <td>{frequencyConverter.outputCurrent}</td>
+                                    </tr>
+                                    <tr className="warning">
+                                        <th scope="row">Output voltage</th>
+                                        <td>{frequencyConverter.outputVoltage}</td>
                                     </tr>
                                     <tr className="warning">
                                         <th scope="row">Price</th>
@@ -116,15 +119,15 @@ class Tablet extends Component {
 export default connect(
     state => ({
         frequencyConverter: state.frequencyConverter,
-        isDeletedProduct: state.status.deletedProduct,
+        isDeleted: state.status.deleted,
         errorMessage: state.message
     }),
     dispatch => ({
-        onGetTablet: (id) => {
-            dispatch(getTablet(id))
+        onGetFrequencyConverter: (id) => {
+            dispatch(getFrequencyConverter(id))
         },
-        onDeleteTablet: (id) => {
-            dispatch(deleteTablet(id))
+        onDeleteFrequencyConverter: (id) => {
+            dispatch(deleteFrequencyConverter(id))
         }
     })
-)(Tablet)
+)(FrequencyConverter)

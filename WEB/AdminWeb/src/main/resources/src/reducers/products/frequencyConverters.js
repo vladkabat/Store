@@ -1,6 +1,6 @@
 import {
-    SET_TABLETS
-} from '../../constants/products/tablets'
+    SET_FREQUENCY_CONVERTERS
+} from '../../constants/products/frequencyConverters'
 import {API_URL} from "../../constants/store"
 
 const initialState = {
@@ -14,8 +14,8 @@ const initialState = {
     totalPages: 0
 };
 
-const tablets = (state = initialState, action) => {
-        if (action.type === SET_TABLETS) {
+const frequencyConverters = (state = initialState, action) => {
+        if (action.type === SET_FREQUENCY_CONVERTERS) {
             let page = action.payload;
             let products = page.content;
             if (products != null && products.length > 0) {
@@ -38,7 +38,7 @@ const tablets = (state = initialState, action) => {
                         return {
                             ...product,
                             rating: rating,
-                            link: "/tablets/" + product.id,
+                            link: "/frequencyConverters/" + product.id,
                             urlImage: API_URL + "/images/" + product.imageId
                         };
                     })
@@ -52,5 +52,5 @@ const tablets = (state = initialState, action) => {
     }
 ;
 
-export default tablets
+export default frequencyConverters
 

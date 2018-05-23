@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "frequency_converters")
+@Document(collection = "frequencyConverters")
 public class FrequencyConverter extends Product {
 
     private String manufacturer; //производитель

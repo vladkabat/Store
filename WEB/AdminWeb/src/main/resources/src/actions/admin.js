@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {dataAuthenticatedAdminFalse, dataAuthenticatedAdminTrue} from './status'
+import {dataAuthenticatedFalse, dataAuthenticatedTrue} from './status'
 import {dataClearErrorMessage, dataSetErrorMessage} from './message'
 import {API_URL} from '../constants/store'
 
@@ -16,7 +16,7 @@ export const login = (admin) => {
                     let token = window.btoa(admin.username + ':' + admin.password);
                     axios.defaults.headers.common['Authorization'] = 'Basic ' + token;
                     dispatch(dataClearErrorMessage());
-                    dispatch(dataAuthenticatedAdminTrue());
+                    dispatch(dataAuthenticatedTrue());
                 } else {
                     dispatch(dataSetErrorMessage('You are not admin!'));
                 }
@@ -36,7 +36,7 @@ export const logout = () => {
     delete axios.defaults.headers.common['Authorization'];
     return (dispatch) => {
         dispatch(dataClearErrorMessage());
-        dispatch(dataAuthenticatedAdminFalse());
+        dispatch(dataAuthenticatedFalse());
     };
 };
 

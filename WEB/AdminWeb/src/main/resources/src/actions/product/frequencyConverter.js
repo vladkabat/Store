@@ -1,45 +1,45 @@
 import axios from 'axios'
 import {
-    SET_TABLET
-} from '../../constants/product/tablet'
+    SET_FREQUENCY_CONVERTER
+} from '../../constants/product/frequencyConverter'
 import {
-    dataDeleteProductTrue,
-    dataCreatedProductTrue,
-    dataUpdatedProductTrue
+    dataDeleteTrue,
+    dataCreatedTrue,
+    dataUpdatedTrue
 } from '../status'
 import {API_URL} from '../../constants/store'
 import {dataClearErrorMessage, dataSetErrorMessage} from "../message"
 
-export const getTablet = (id) => {
+export const getFrequencyConverter = (id) => {
     return (dispatch) => {
         return axios
-            .get(API_URL + '/tablets/' + id)
+            .get(API_URL + '/frequencyConverters/' + id)
             .then((response) => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataGetTablet(response.data))
+                dispatch(dataGetFrequencyConverter(response.data))
             })
     }
 };
 
-export const createTablet = (file, name, description, ram, numberCores, amount, screenSize) => {
+export const createFrequencyConverter = (file, name, manufacturer, outputPower, outputCurrent, amount, outputVoltage) => {
     let data = new FormData();
     data.append("file", file);
     data.append("name", name);
-    data.append("description", description);
-    data.append("ram", ram);
-    data.append("numberCores", numberCores);
+    data.append("manufacturer", manufacturer);
+    data.append("outputPower", outputPower);
+    data.append("outputCurrent", outputCurrent);
     data.append("amount", amount);
-    data.append("screenSize", screenSize);
+    data.append("outputVoltage", outputVoltage);
     return (dispatch) => {
         return axios
-            .post(API_URL + '/tablets/', data, {
+            .post(API_URL + '/frequencyConverters/', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
             .then(() => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataCreatedProductTrue());
+                dispatch(dataCreatedTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -47,28 +47,28 @@ export const createTablet = (file, name, description, ram, numberCores, amount, 
     }
 };
 
-export const updateTablet = (file, id, name, description, ram, numberCores, amount, screenSize) => {
+export const updateFrequencyConverter = (file, id, name, manufacturer, outputPower, outputCurrent, amount, outputVoltage) => {
     let data = new FormData();
     if(file !== undefined){
         data.append("file", file);
     }
     data.append("id", id);
     data.append("name", name);
-    data.append("description", description);
-    data.append("ram", ram);
-    data.append("numberCores", numberCores);
+    data.append("manufacturer", manufacturer);
+    data.append("outputPower", outputPower);
+    data.append("outputCurrent", outputCurrent);
     data.append("amount", amount);
-    data.append("screenSize", screenSize);
+    data.append("outputVoltage", outputVoltage);
     return (dispatch) => {
         return axios
-            .put(API_URL + '/tablets/', data, {
+            .put(API_URL + '/frequencyConverters/', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
             .then(() => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataUpdatedProductTrue());
+                dispatch(dataUpdatedTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -76,13 +76,13 @@ export const updateTablet = (file, id, name, description, ram, numberCores, amou
     }
 };
 
-export const deleteTablet = (id) => {
+export const deleteFrequencyConverter = (id) => {
     return (dispatch) => {
         return axios
-            .delete(API_URL + '/tablets/' + id)
+            .delete(API_URL + '/frequencyConverters/' + id)
             .then(() => {
                 dispatch(dataClearErrorMessage());
-                dispatch(dataDeleteProductTrue());
+                dispatch(dataDeleteTrue());
             })
             .catch((error) => {
                 dispatch(dataSetErrorMessage(error.response.data.errorMessage));
@@ -90,8 +90,8 @@ export const deleteTablet = (id) => {
     }
 };
 
-const dataGetTablet = (tablet) => {
-    return {type: SET_TABLET, payload: tablet};
+const dataGetFrequencyConverter = (frequencyConverter) => {
+    return {type: SET_FREQUENCY_CONVERTER, payload: frequencyConverter};
 };
 
 
