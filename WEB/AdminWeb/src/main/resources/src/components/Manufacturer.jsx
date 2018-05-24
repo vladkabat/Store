@@ -5,7 +5,7 @@ import ErrorMessage from "../components/ErrorMessage"
 const Manufacturer = ({manufacturer, errorMessage, deleteManufacturer}) => {
 
     return (
-         <div className="col-md-12">
+        <div className="col-md-12">
             <br/>
             <div className="col-md-8">
                 <div className="portlet light bordered">
@@ -18,9 +18,9 @@ const Manufacturer = ({manufacturer, errorMessage, deleteManufacturer}) => {
                                 <h2>
                                     {manufacturer.name} &nbsp;
                                     <Link to={manufacturer.linkUpdate}
-                                        className="btn btn-primary">Update &raquo;</Link> &nbsp;
+                                          className="btn btn-primary">Update &raquo;</Link> &nbsp;
                                     <button onClick={() => deleteManufacturer(manufacturer.id)}
-                                        className="btn btn-primary">Delete &raquo;</button>
+                                            className="btn btn-primary">Delete &raquo;</button>
                                 </h2>
                              </span>
                         </div>
@@ -28,30 +28,30 @@ const Manufacturer = ({manufacturer, errorMessage, deleteManufacturer}) => {
                     <div className="body">
                         <table className="table">
                             <thead>
-                                <tr className="active">
-                                    <th>#</th>
-                                    <th>Value</th>
-                                </tr>
+                            <tr className="active">
+                                <th>#</th>
+                                <th>Value</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr className="warning">
-                                    <th scope="row">Phone</th>
-                                    <td>{manufacturer.phone}</td>
-                                </tr>
-                                <tr className="warning">
-                                    <th scope="row">Email</th>
-                                    <td>{manufacturer.email}</td>
-                                </tr>
-                                <tr className="warning">
-                                    <th scope="row">Description</th>
-                                    <td>{manufacturer.description}</td>
-                                </tr>
+                            <tr className="warning">
+                                <th scope="row">Phone</th>
+                                <td>{manufacturer.phone}</td>
+                            </tr>
+                            <tr className="warning">
+                                <th scope="row">Email</th>
+                                <td>{manufacturer.email}</td>
+                            </tr>
+                            <tr className="warning">
+                                <th scope="row">Description</th>
+                                <td>{manufacturer.description}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     )
 };
 

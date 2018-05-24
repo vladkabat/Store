@@ -30,11 +30,13 @@ class Engines extends Component {
                         <span className="lead">Engines</span>
                         &nbsp; <Link to="/create/engines" className="btn btn-primary small">Create &raquo;</Link> &nbsp;
                         {(engines.number - 1 >= 0) ?
-                            <button onClick={() => onGetEngines(engines.number - 1, engines.size)} className="btn btn-success">Prev
+                            <button onClick={() => onGetEngines(engines.number - 1, engines.size)}
+                                    className="btn btn-success">Prev
                             </button>
                             : null} &nbsp;
                         {(engines.number + 1 < engines.totalPages) ?
-                            <button onClick={() => onGetEngines(engines.number + 1, engines.size)} className="btn btn-success">Next
+                            <button onClick={() => onGetEngines(engines.number + 1, engines.size)}
+                                    className="btn btn-success">Next
                             </button>
                             : null}
                     </div>

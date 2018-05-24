@@ -47,9 +47,9 @@ const CreateFrequencyConverter = ({isCreated, onCreateFrequencyConverter, errorM
                                 <div className="form-group">
                                     <label>Manufacturer</label>
                                     <input type="text" placeholder="Enter manufacturer here.."
-                                              ref={(input) => {
-                                                  manufacturer = input
-                                              }} className="form-control" required/>
+                                           ref={(input) => {
+                                               manufacturer = input
+                                           }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
                                     <label>Amount</label>

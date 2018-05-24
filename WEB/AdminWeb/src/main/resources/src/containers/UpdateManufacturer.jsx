@@ -10,7 +10,7 @@ class UpdateManufacturer extends Component {
 
         const {isUpdated, onUpdateManufacturer, errorMessage, manufacturers} = this.props;
         let id = this.props.match.params.id;
-        let manufacturer = manufacturers.content.filter(manufacturer => manufacturer.id == id)[0];
+        let manufacturer = manufacturers.content.filter(manufacturer => manufacturer.id === id)[0];
         let name = '';
         let phone = '';
         let email = '';
@@ -48,9 +48,9 @@ class UpdateManufacturer extends Component {
                                     <div className="form-group">
                                         <label>Phone</label>
                                         <input type="text" defaultValue={manufacturer.phone}
-                                                  ref={(input) => {
-                                                      phone = input
-                                                  }} className="form-control" required/>
+                                               ref={(input) => {
+                                                   phone = input
+                                               }} className="form-control" required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Email</label>
@@ -62,9 +62,9 @@ class UpdateManufacturer extends Component {
                                     <div className="form-group">
                                         <label>Description</label>
                                         <textarea defaultValue={manufacturer.description} required rows="3"
-                                               ref={(input) => {
-                                                   description = input
-                                               }} className="form-control"/>
+                                                  ref={(input) => {
+                                                      description = input
+                                                  }} className="form-control"/>
                                     </div>
                                     <button className="btn btn-lg btn-info">Submit</button>
                                 </div>

@@ -9,7 +9,7 @@ const Product = ({product}) => {
             <div className="text-center">
                 <img src={product.urlImage} width="220" height="250"/>
             </div>
-            <h2>{(product.name.length >= 15) ? (product.name.substr(0,15) + '...') : product.name}</h2>
+            <h2>{(product.name.length >= 15) ? (product.name.substr(0, 15) + '...') : product.name}</h2>
             <h4>{product.price} RUB</h4>
             <p>
                 <Link to={product.link} className="btn btn-primary">View details &raquo;</Link>

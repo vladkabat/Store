@@ -56,9 +56,9 @@ class UpdateEngine extends Component {
                                     <div className="form-group">
                                         <label>Manufacturer</label>
                                         <input type="text" defaultValue={engine.manufacturer}
-                                                  ref={(input) => {
-                                                      manufacturer = input
-                                                  }} className="form-control" required/>
+                                               ref={(input) => {
+                                                   manufacturer = input
+                                               }} className="form-control" required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Amount</label>

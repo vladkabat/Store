@@ -15,7 +15,8 @@ class Manufacturers extends Component {
     renderListManufacturers() {
         const {manufacturers, errorMessage, onDeleteManufacturer} = this.props;
         return manufacturers.content.map((manufacturer, index) => {
-                return <Manufacturer key={index} manufacturer={manufacturer} errorMessage={errorMessage} deleteManufacturer={onDeleteManufacturer}/>
+                return <Manufacturer key={index} manufacturer={manufacturer} errorMessage={errorMessage}
+                                     deleteManufacturer={onDeleteManufacturer}/>
             }
         )
     }
@@ -28,13 +29,16 @@ class Manufacturers extends Component {
                 <div className="panel panel-default">
                     <div className="panel-heading">
                         <span className="lead">Manufacturers</span>
-                        &nbsp; <Link to="/create/manufacturers" className="btn btn-primary small">Create &raquo;</Link> &nbsp;
+                        &nbsp; <Link to="/create/manufacturers"
+                                     className="btn btn-primary small">Create &raquo;</Link> &nbsp;
                         {(manufacturers.number - 1 >= 0) ?
-                            <button onClick={() => onGetManufacturers(manufacturers.number - 1, manufacturers.size)} className="btn btn-success">Prev
+                            <button onClick={() => onGetManufacturers(manufacturers.number - 1, manufacturers.size)}
+                                    className="btn btn-success">Prev
                             </button>
                             : null} &nbsp;
                         {(manufacturers.number + 1 < manufacturers.totalPages) ?
-                            <button onClick={() => onGetManufacturers(manufacturers.number + 1, manufacturers.size)} className="btn btn-success">Next
+                            <button onClick={() => onGetManufacturers(manufacturers.number + 1, manufacturers.size)}
+                                    className="btn btn-success">Next
                             </button>
                             : null}
                     </div>

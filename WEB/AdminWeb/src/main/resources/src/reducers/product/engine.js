@@ -21,10 +21,10 @@ const engine = (state = initialState, action) => {
     if (action.type === SET_ENGINE) {
         let engine = action.payload;
         let rating = 0;
-        for(let i = 0; i < engine.ratings.length; i++){
+        for (let i = 0; i < engine.ratings.length; i++) {
             rating = rating + engine.ratings[i].value;
         }
-        if(rating !== 0){
+        if (rating !== 0) {
             rating = (rating / engine.ratings.length).toFixed(1);
         }
         return {

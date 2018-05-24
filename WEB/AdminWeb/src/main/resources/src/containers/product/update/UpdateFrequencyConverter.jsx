@@ -56,9 +56,9 @@ class UpdateFrequencyConverter extends Component {
                                     <div className="form-group">
                                         <label>Manufacturer</label>
                                         <input type="text" defaultValue={frequencyConverter.manufacturer}
-                                                  ref={(input) => {
-                                                      manufacturer = input
-                                                  }} className="form-control" required/>
+                                               ref={(input) => {
+                                                   manufacturer = input
+                                               }} className="form-control" required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Amount</label>
@@ -69,21 +69,24 @@ class UpdateFrequencyConverter extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label>Output power</label>
-                                        <input type="number" defaultValue={frequencyConverter.outputPower} required step="0.1"
+                                        <input type="number" defaultValue={frequencyConverter.outputPower} required
+                                               step="0.1"
                                                ref={(input) => {
                                                    outputPower = input
                                                }} className="form-control"/>
                                     </div>
                                     <div className="form-group">
                                         <label>Output current</label>
-                                        <input type="number" defaultValue={frequencyConverter.outputCurrent} required step="0.1"
+                                        <input type="number" defaultValue={frequencyConverter.outputCurrent} required
+                                               step="0.1"
                                                ref={(input) => {
                                                    outputCurrent = input
                                                }} className="form-control"/>
                                     </div>
                                     <div className="form-group">
                                         <label>Output voltage</label>
-                                        <input type="number" defaultValue={frequencyConverter.outputVoltage} required step="0.1"
+                                        <input type="number" defaultValue={frequencyConverter.outputVoltage} required
+                                               step="0.1"
                                                ref={(input) => {
                                                    outputVoltage = input
                                                }} className="form-control"/>

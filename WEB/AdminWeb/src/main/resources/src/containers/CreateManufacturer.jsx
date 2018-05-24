@@ -37,9 +37,9 @@ const CreateManufacturer = ({isCreated, onCreateManufacturer, errorMessage}) => 
                                 <div className="form-group">
                                     <label>Phone</label>
                                     <input type="text" placeholder="Enter phone here.."
-                                              ref={(input) => {
-                                                  phone = input
-                                              }} className="form-control" required/>
+                                           ref={(input) => {
+                                               phone = input
+                                           }} className="form-control" required/>
                                 </div>
                                 <div className="form-group">
                                     <label>Email</label>
@@ -48,13 +48,13 @@ const CreateManufacturer = ({isCreated, onCreateManufacturer, errorMessage}) => 
                                                email = input
                                            }} className="form-control" required/>
                                 </div>
-                                 <div className="form-group">
+                                <div className="form-group">
                                     <label>Description</label>
                                     <textarea placeholder="Enter Description Here.." rows="3"
-                                            ref={(input) => {
-                                                description = input
-                                            }} className="form-control" required/>
-                                 </div>
+                                              ref={(input) => {
+                                                  description = input
+                                              }} className="form-control" required/>
+                                </div>
                                 <button className="btn btn-lg btn-info">Submit</button>
                             </div>
                         </form>

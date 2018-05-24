@@ -28,13 +28,18 @@ class FrequencyConverters extends Component {
                 <div className="panel panel-default">
                     <div className="panel-heading">
                         <span className="lead">Frequency converters</span>
-                        &nbsp; <Link to="/create/frequencyConverters" className="btn btn-primary small">Create &raquo;</Link> &nbsp;
+                        &nbsp; <Link to="/create/frequencyConverters"
+                                     className="btn btn-primary small">Create &raquo;</Link> &nbsp;
                         {(frequencyConverters.number - 1 >= 0) ?
-                            <button onClick={() => onGetFrequencyConverters(frequencyConverters.number - 1, frequencyConverters.size)} className="btn btn-success">Prev
+                            <button
+                                onClick={() => onGetFrequencyConverters(frequencyConverters.number - 1, frequencyConverters.size)}
+                                className="btn btn-success">Prev
                             </button>
                             : null} &nbsp;
                         {(frequencyConverters.number + 1 < frequencyConverters.totalPages) ?
-                            <button onClick={() => onGetFrequencyConverters(frequencyConverters.number + 1, frequencyConverters.size)} className="btn btn-success">Next
+                            <button
+                                onClick={() => onGetFrequencyConverters(frequencyConverters.number + 1, frequencyConverters.size)}
+                                className="btn btn-success">Next
                             </button>
                             : null}
                     </div>
