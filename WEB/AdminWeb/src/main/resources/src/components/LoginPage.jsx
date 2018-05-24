@@ -1,9 +1,9 @@
 import React from 'react'
 import ErrorMessage from '../components/ErrorMessage'
-import {login} from '../actions/admin'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
-const LoginPage = ({errorMessage, onLogin}) => {
+const LoginPage = ({errorMessage, login}) => {
 
     let username = '';
     let password = '';
@@ -14,11 +14,11 @@ const LoginPage = ({errorMessage, onLogin}) => {
             username: username.value,
             password: password.value
         };
-        onLogin(admin);
+        login(admin);
     };
 
     return (
-        <form className="form-horizontal" role="form" onSubmit={handlerLogin}>
+        <form className="form-horizontal" role="form">
             <div className="row">
                 <div className="col-md-3"/>
                 <div className="col-md-6">
@@ -67,20 +67,11 @@ const LoginPage = ({errorMessage, onLogin}) => {
             <div className="row">
                 <div className="col-md-3"/>
                 <div className="col-md-6">
-                    <button type="submit" className="btn btn-success"><i className="fa fa-sign-in"/> Login</button>
+                    <Link className='btn btn-success' to='/' onClick={handlerLogin}>Login</Link>
                 </div>
             </div>
         </form>
     )
 };
 
-export default connect(
-    state => ({
-        errorMessage: state.message
-    }),
-    dispatch => ({
-        onLogin: (admin) => {
-            dispatch(login(admin))
-        }
-    })
-)(LoginPage)
+export default LoginPage

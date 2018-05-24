@@ -2,8 +2,8 @@ import React from 'react'
 import Menu from '../components/Menu'
 import {Switch, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {logout} from '../actions/admin'
-import LoginPage from './LoginPage'
+import {logout, login} from '../actions/admin'
+import LoginPage from '../components/LoginPage'
 import Engines from './products/Engines'
 import Engine from './product/Engine'
 import FrequencyConverter from './product/FrequencyConverter'
@@ -17,7 +17,7 @@ import CreateManufacturer from "./CreateManufacturer"
 import UpdateManufacturer from "./UpdateManufacturer"
 import 'bootstrap/dist/css/bootstrap.css'
 
-const Page = ({isAuthenticated, onLogout}) => {
+const Page = ({isAuthenticated, onLogout, errorMessage, onLogin}) => {
 
     if (isAuthenticated) {
         return (
@@ -25,10 +25,10 @@ const Page = ({isAuthenticated, onLogout}) => {
                 <Menu logout={onLogout}/>
                 <Switch>
                     <Route exact path='/' component={Engines}/>
+                    <Route exact path='/login' component={Engines}/>
                     <Route exact path='/engines' component={Engines}/>
                     <Route exact path='/frequencyConverters' component={FrequencyConverters}/>
                     <Route exact path='/manufacturers' component={Manufacturers}/>
-                    <Route path='/login' component={LoginPage}/>
                     <Route path='/engines/:id' component={Engine}/>
                     <Route path='/frequencyConverters/:id' component={FrequencyConverter}/>
                     <Route path='/update/engines/:id' component={UpdateEngine}/>
@@ -43,7 +43,7 @@ const Page = ({isAuthenticated, onLogout}) => {
     } else {
         return (
             <div className="container">
-                <LoginPage/>
+                <LoginPage errorMessage={errorMessage} login={onLogin}/>
             </div>
         )
     }
@@ -51,11 +51,15 @@ const Page = ({isAuthenticated, onLogout}) => {
 
 export default connect(
     state => ({
-        isAuthenticated: state.status.authenticated
+        isAuthenticated: state.status.authenticated,
+        errorMessage: state.message
     }),
     dispatch => ({
         onLogout: () => {
             dispatch(logout())
+        },
+        onLogin: (admin) => {
+            dispatch(login(admin))
         }
     })
 )(Page)
