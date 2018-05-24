@@ -39,12 +39,12 @@ const manufacturers = (state = initialState, action) => {
             return initialState;
         }
     } else if (action.type === DELETE_MANUFACTURER) {
-                   let id = action.payload;
-                   return {
-                        ...state,
-                        content: state.content.filter(manufacturer => manufacturer.id !== id)
-                   }
-               }
+        let id = action.payload;
+        return {
+            ...state,
+            content: state.content.filter(manufacturer => manufacturer.id !== id)
+        }
+    }
 
     return state
 };
