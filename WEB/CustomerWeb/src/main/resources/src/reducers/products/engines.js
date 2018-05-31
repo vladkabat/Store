@@ -22,7 +22,7 @@ const engines = (state = initialState, action) => {
     if (action.type === SET_ENGINES) {
         let page = action.payload;
         let products = page.content;
-        if (products.length > 0) {
+        if (products != null && products.length > 0) {
             return {
                 last: page.last,
                 first: page.first,
