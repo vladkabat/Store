@@ -5,20 +5,17 @@ import {Switch, Route} from 'react-router-dom'
 import LoginPage from './LoginPage'
 import Products from './products/Products'
 import RegistrationPage from './RegistrationPage'
-import Phones from './products/Phones'
-import Phone from './product/Phone'
-import Tvs from './products/Tvs'
-import Tv from './product/Tv'
-import Tablet from './product/Tablet'
-import VideoCamera from './product/VideoCamera'
-import VideoCameras from './products/VideoCameras'
-import Tablets from './products/Tablets'
+import Engines from './products/Engines'
+import FrequencyConverters from './products/FrequencyConverters'
+import Engine from './product/Engine'
+import FrequencyConverter from './product/FrequencyConverter'
 import {connect} from 'react-redux'
 import Cart from './Orders'
 import 'bootstrap/dist/css/bootstrap.css'
 import {getOrders, dataSetOrders} from '../actions/orders'
 import {dataLoginUserData, logoutUser} from '../actions/customer'
 import Purchases from "./Purchases"
+import Manufacturers from "./Manufacturers"
 
 const Page = ({orders, customer, onGetOrders, onLoginCustomer, onSetOrders, onLogoutUser}) => {
 
@@ -41,18 +38,15 @@ const Page = ({orders, customer, onGetOrders, onLoginCustomer, onSetOrders, onLo
             <Menu orders={orders} isAuthenticated={customer.isAuthenticated} logoutUser={onLogoutUser}/>
             <Switch>
                 <Route exact path='/' component={Products}/>
-                <Route exact path='/phones' component={Phones}/>
-                <Route exact path='/tvs' component={Tvs}/>
-                <Route exact path='/videoCameras' component={VideoCameras}/>
-                <Route exact path='/tablets' component={Tablets}/>
+                <Route exact path='/engines' component={Engines}/>
+                <Route exact path='/frequencyConverters' component={FrequencyConverters}/>
+                <Route exact path='/manufacturers' component={Manufacturers}/>
                 <Route path='/cart' component={Cart}/>
                 <Route path='/purchases' component={Purchases}/>
                 <Route path='/login' component={LoginPage}/>
                 <Route path='/registration' component={RegistrationPage}/>
-                <Route path='/phones/:id' component={Phone}/>
-                <Route path='/tvs/:id' component={Tv}/>
-                <Route path='/tablets/:id' component={Tablet}/>
-                <Route path='/videoCameras/:id' component={VideoCamera}/>
+                <Route path='/engines/:id' component={Engine}/>
+                <Route path='/frequencyConverters/:id' component={FrequencyConverter}/>
             </Switch>
         </div>
     )

@@ -10,7 +10,7 @@ const Rating = ({customer, product, updateRating}) => {
         }
     });
 
-    const handlerUpdateRatingPhone = (event) => {
+    const handlerUpdateRating = (event) => {
         event.preventDefault();
         updateRating(product.id, {userId: customer.id, value: rating.value});
     };
@@ -18,7 +18,7 @@ const Rating = ({customer, product, updateRating}) => {
     if (customer.isAuthenticated && !isVoted) {
 
         return (
-            <form onSubmit={handlerUpdateRatingPhone} className="form-inline">
+            <form onSubmit={handlerUpdateRating} className="form-inline">
                 <input type="number" min="0" max="5" defaultValue="5"
                        className="form-control mb-2 mr-sm-2 mb-sm-0"
                        ref={(input) => {

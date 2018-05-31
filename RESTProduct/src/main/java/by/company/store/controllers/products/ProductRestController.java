@@ -92,7 +92,7 @@ public class ProductRestController {
     //get 4 filter products
     private List<Product> getFilterProducts(List<Product> products) {
         List<Product> clientProducts = new ArrayList<>();
-        int countProducts = 4;
+        int countProducts = 3;
         if (products.size() >= countProducts) {
             for(int i = 0; i < countProducts; i++) {
                 clientProducts.add(products.get(i));

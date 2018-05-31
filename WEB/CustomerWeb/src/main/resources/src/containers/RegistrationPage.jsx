@@ -34,6 +34,7 @@ const RegistrationPage = ({errorMessage, onAddOrders, onRegistrationUser,
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
                         <div className="panel panel-default registrationForm">
+                            <br/>
                             <div className="panel-heading">
                                 <h3 className="panel-title">Registration user</h3>
                             </div>

@@ -10,6 +10,7 @@
 
     <modules>
         <module>AdminWeb</module>
+        <module>CustomerWeb</module>
     </modules>
 
     <dependencies>

@@ -34,6 +34,7 @@ const LoginPage = ({errorMessage, onLoginUser, onAddOrders,
             <div className="row">
                 <div className="col-md-6 col-md-offset-3">
                     <div className="panel panel-default">
+                        <br/>
                         <div className="panel-heading">
                             <h3 className="panel-title">Login</h3>
                         </div>

@@ -9,37 +9,33 @@ const Menu = ({orders, isAuthenticated, logoutUser}) => {
     });
 
     return (
-        <nav className="navbar navbar-default">
-            <div className="container-fluid">
-                <Link className="navbar-header navbar-brand" to='/'><strong>Store</strong></Link>
-                <ul className="nav navbar-nav">
-                    <li>
-                        <Link to='/phones'>Phones</Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link className="navbar-brand" to='/'><strong>Store</strong></Link>
+            <div className="collapse navbar-collapse">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/engines'>Engines</Link>
                     </li>
-                    <li>
-                        <Link to='/tablets'>Tablets</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/frequencyConverters'>Frequency converters</Link>
                     </li>
-                    <li>
-                        <Link to='/tvs'>TVs</Link>
-                    </li>
-                    <li>
-                        <Link to='/videoCameras'>Video cameras</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to='/manufacturers'>Manufacturers</Link>
                     </li>
                 </ul>
-                <ul className="nav navbar-nav navbar-right">
+                <ul className="navbar-nav navbar-right">
                     <li>
-                        <Link to='/cart'>
+                        <Link className="nav-link" to='/cart'>
                             <div>
-                                <span className="glyphicon glyphicon-shopping-cart" aria-hidden="true"/> &nbsp;
-                                {count > 0 ? <span className="badge"> {count} </span> : null}
+                                Cart: {count > 0 ? count : 0}
                             </div>
                         </Link>
                     </li>
                     <li>
                         {
                             isAuthenticated ?
-                                <Link to='/' onClick={logoutUser}>Logout</Link> :
-                                <Link to='/login'>Login</Link>
+                                <Link className="nav-link" to='/' onClick={logoutUser}>Logout</Link> :
+                                <Link className="nav-link" to='/login'>Login</Link>
                         }
                     </li>
                 </ul>

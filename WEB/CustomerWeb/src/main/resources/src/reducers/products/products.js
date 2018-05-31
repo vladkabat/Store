@@ -16,14 +16,10 @@ const products = (state = [], action) => {
                         rating = (rating / product.ratings.length).toFixed(1);
                     }
                     let link = '';
-                    if (product.type === 'PHONE') {
-                        link = "/phones/" + product.id;
-                    } else if (product.type === 'TV') {
-                        link = "/tvs/" + product.id;
-                    } else if (product.type === 'TABLET') {
-                        link = "/tablets/" + product.id;
-                    } else if (product.type === 'VIDEO_CAMERA') {
-                        link = "/videoCameras/" + product.id;
+                    if (product.type === 'ENGINE') {
+                        link = "/engines/" + product.id;
+                    } else if (product.type === 'FREQUENCY_CONVERTER') {
+                        link = "/frequencyConverters/" + product.id;
                     }
                     return {
                         ...product,

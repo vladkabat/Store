@@ -3,10 +3,9 @@ import React from 'react'
 const ErrorMessage = ({message}) => {
     if (message === "") {
         return null;
-    }
-    else {
+    } else {
         return (
-            <div className="alert alert-danger">
+            <div className="text-danger align-middle">
                 {message}
             </div>
         )
