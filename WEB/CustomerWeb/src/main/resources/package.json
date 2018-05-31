@@ -1,0 +1,41 @@
+{
+	"name": "CustomerWeb",
+	"version": "1.0.0",
+	"description": "Customer interfase for store",
+	"main": "index.js",
+	"repository": "github.com/vladkabat/Store.git",
+	"author": "Vlad Kabat <vlad.kabat@yandex.ru>",
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^0.18.0",
+		"bootstrap": "^4.1.1",
+		"jquery": "^3.3.1",
+		"popper.js": "^1.14.3",
+		"react": "^16.3.2",
+		"react-dom": "^16.3.2",
+		"react-redux": "^5.0.7",
+		"react-router-dom": "^4.2.2",
+		"redux": "^4.0.0",
+		"redux-thunk": "^2.2.0"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"clean-webpack-plugin": "^0.1.19",
+		"css-loader": "^0.28.11",
+		"mini-css-extract-plugin": "^0.4.0",
+		"webpack": "^4.8.1",
+		"webpack-cli": "^2.1.3",
+		"webpack-dev-server": "^3.1.4"
+	},
+	"resolutions": {
+		"webpack-cli/**/jscodeshift": "facebook/jscodeshift#247/head"
+	},
+	"scripts": {
+		"dev": "webpack-dev-server --open --mode development",
+		"start": "webpack --mode production"
+	}
+}
